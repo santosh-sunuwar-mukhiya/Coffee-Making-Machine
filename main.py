@@ -2,13 +2,23 @@ from menu import Menu
 from coffee_maker import CoffeeMaker
 from money_machine import MoneyMachine
 
-machineOn = True
+coffee_maker_obj = CoffeeMaker()
+money_machine_obj =  MoneyMachine()
+menu = Menu()
 
+machineOn = True
 while machineOn:
-    user_input = input("What would you like? (espresso/latte/cappuccino/):")
-    if user_input == 'off':
+    options = menu.get_items()
+    choice = input(f"What would you like? {options}:")
+    if choice == 'off':
         machinOn = False
         break
-    elif user_input == 'report':
-        obj = CoffeeMaker()
-        print(obj.report())
+    elif choice == 'report':
+        coffee_maker_obj.report()
+        money_machine_obj.report()
+    
+    else:
+        drink = menu.find_drink(choice)
+        print(coffee_maker_obj.is_resource_sufficient(drink))
+    
+
