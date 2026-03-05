@@ -9,3 +9,6 @@ while machineOn:
     if user_input == 'off':
         machinOn = False
         break
+    elif user_input == 'report':
+        obj = CoffeeMaker()
+        print(obj.report())
