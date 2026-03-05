@@ -19,6 +19,8 @@ while machineOn:
     
     else:
         drink = menu.find_drink(choice)
-        print(coffee_maker_obj.is_resource_sufficient(drink))
+        if coffee_maker_obj.is_resource_sufficient(drink):
+            if money_machine_obj.make_payment(drink.cost):
+                coffee_maker_obj.make_coffee(drink)
     
 
